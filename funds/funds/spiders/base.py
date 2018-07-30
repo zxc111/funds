@@ -4,7 +4,7 @@ import logging
 
 from scrapy import Spider
 from funds.models.db import InitDB
-from funds.models.funds import Fund
+from funds.models.funds import Fund, FundStatistics
 
 
 class BaseSpider(Spider):
@@ -45,5 +45,17 @@ class BaseSpider(Spider):
             fund_list,
             session
         )
+        session.close()
         return res
 
+    def get_fundcode_list(self):
+        session = self.session
+        res = Fund.get_fundcode_list(session)
+        session.close()
+        return res
+
+    def get_exist_fundcode_date_list(self, fundcode):
+        session = self.session
+        res = FundStatistics.get_exists_date_list(session, fundcode)
+        session.close()
+        return res

@@ -9,7 +9,7 @@ from .config import Config, Base
 class InitDB:
     def __init__(self, env):
         config = Config.get_db(env)
-        from .funds import Fund
+        from .funds import Fund, FundStatistics
         engine = create_engine(
             'mysql+pymysql://{username}:{passwd}@{host}/{db}?charset=utf8mb4'.format(**config),
             echo=False,
