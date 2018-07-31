@@ -1,3 +1,5 @@
 sqlalchemy
 scrapy
 pymysql
+
+django
