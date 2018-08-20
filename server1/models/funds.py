@@ -54,3 +54,14 @@ class FundStatistics(Base):
             cls.fundcode==fundcode,
         ).all()
         return [i[0] for i in res]
+
+    @property
+    def dict(self):
+        return dict(
+            id=self.id,
+            fundcode=self.fundcode,
+            net_asset_value=self.net_asset_value,
+            cumulative_net_value=self.cumulative_net_value,
+            date=self.date.strftime("%Y-%m-%d"),
+
+        )
